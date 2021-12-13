@@ -2,16 +2,17 @@
 -- by thearst3rd
 
 
-local times = {60, 60*60, 60*60*24, 60*60*24*7}
+local times = {60, 60*60, 60*60*24, 60*60*24*7}	-- times in seconds
 local colors =
 {
-	{1.0, 0.0, 0.0},
-	{0.0, 0.0, 1.0},
-	{0.0, 1.0, 0.0},
-	{1.0, 1.0, 1.0},
+	{1.0, 0.0, 0.0},	-- minute
+	{0.0, 0.0, 1.0},	-- hour
+	{0.0, 1.0, 0.0},	-- day
+	{1.0, 1.0, 1.0},	-- week
 }
 
 local time = 0.0
+local timescale = 10000
 
 local radius = 100
 
@@ -26,7 +27,7 @@ end
 
 
 function love.update(dt)
-	time = time + 10000 * dt
+	time = time + dt * timescale
 	if time >= times[4] then time = time - times[4] end
 end
 
